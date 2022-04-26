@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.hidden{
+	display: none;
+}
+</style>
+</head>
+<body>
+<p id="display_name"></p>
+ <p>Thank you for your inquiry.</p>
+ <p>A4 digit verification number has been send to your phone number,<p id="display_number"</p></p>
+ <p>please enter in the following box and sumbit for confirmation :</p>
+<div class="div_class">
+<lable>OTP:</lable>
+<input type="test" id="otp"><br><br>
+<p class="otp_test hidden" id="otp_test">Validation Successful!!!!!</p>
+<input type="button" name="validate" value="Validate" onclick="validateOTP()">
+</div>
+<script>
+	var name_value = localStorage.getItem("name");
+	var number = localStorage.getItem("phone");
+	var otp_value = localStorage.getItem("OTP");
+	var otp_valid = document.getElementById("otp_test");
+
+	var entryCount = 0;
+	var entryLimit = 3;
+	console.log("Generated OTP:" , otp_value);
+	document.getElementById("display_name").innerHTML = "Dear " + JSON.parse(name_value);
+		document.getElementById("display_number").innerHTML = number;
+	
+	function validateOTP(){
+	var count = 0;
+	var user_entered_otp = document.getElementById('otp').value;
+		if(user_entered_otp == otp_value){
+			otp_valid.classList.remove("hidden");
+			window.location.href = "http://pixel6.co/";
+		}
+			if(user_entered_otp != ""){
+				if (entryCount < entryLimit) {
+					if (user_entered_otp != otp_value){
+					  alert("invalid otp");
+					  entryCount++;
+					  document.getElementById('otp').value = "";
+					} else {
+					  entryCount = 0; 
+					}
+				  } else {
+					  window.location.href="page not found";
+				  }
+			  }
+}	
+</script>
+</body>
+</html>
