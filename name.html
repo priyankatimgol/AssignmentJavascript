@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+
+
+.name_fill_error{
+    color: red;
+	margin-left: 129px;
+}
+.name_char{
+	color: red;
+	margin-left: 129px;
+}
+.name_full_error{
+    color: red;
+	margin-left: 129px;
+}
+.name_min{
+    color: red;
+	margin-left: 129px;
+}
+.error_msg_email{
+	color: red;
+	margin-left: 129px;
+}
+.hidden{
+	display: none;
+}
+#idea{
+
+height:5px;
+width:5px;
+}
+.card{
+color:red;
+margin-left: 129px;
+}
+
+
+</style>
+<script type="text/javascript" src="state.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+<script>
+function validate(){
+	var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+	var validRegex_Email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	var numCheckerRegex = /\d+/g;
+	var name = document.getElementById('name').value;
+	var name_error = document.getElementById("name_fill_error");
+	var name_char_error = document.getElementById("name_char");
+	var name_full = document.getElementById("name_full_error");
+	var name_min = document.getElementById("name_min");
+	var phone=document.getElementById('phone').value;
+    var email = document.getElementById('email').value;
+	var email_error = document.getElementById("error_msg_email");
+	var idea_error = document.getElementById("idea");
+	var jio_error = document.getElementById("jio");
+	var vodafone_error = document.getElementById("vodafone");
+	var card_error = document.getElementById("card");
+
+var State1_error = document.getElementById("1");
+var state2_error = document.getElementById("2");
+var state3_error = document.getElementById("3");
+var state4_error = document.getElementById("4");
+var state5_error = document.getElementById("5");
+var state6_error = document.getElementById("6");
+var state7_error = document.getElementById("7");
+var state8_error = document.getElementById("8");
+var state9_error = document.getElementById("9");
+var state10_error = document.getElementById("10");
+var state11_error = document.getElementById("11");
+var state12_error = document.getElementById("12");
+var state13_error = document.getElementById("13");
+var state14_error = document.getElementById("14");
+var state15_error = document.getElementById("15");
+var state16_error = document.getElementById("16");
+var state17_error = document.getElementById("17");
+var state18_error = document.getElementById("18");
+var state19_error = document.getElementById("19");
+var state20_error = document.getElementById("20");
+var state21_error = document.getElementById("21");
+var state22_error = document.getElementById("22");
+var state23_error = document.getElementById("23");
+var state24_error = document.getElementById("24");
+var state25_error = document.getElementById("25");
+var state26_error = document.getElementById("26");
+var state27_error = document.getElementById("27");
+var state28_error = document.getElementById("28");
+var state29_error = document.getElementById("29");
+var state30_error = document.getElementById("30");
+var state31_error = document.getElementById("31");
+var state32_error = document.getElementById("32");
+var state33_error = document.getElementById("33");
+var state34_error = document.getElementById("34");
+var state35_error = document.getElementById("35");
+var state36_error = document.getElementById("36");
+var state_no_error = document.getElementById("state_error");
+
+	var username=name.split(" ");
+	if (name == "" || name == null) {
+		name_error.classList.remove("hidden");
+	}
+	 else if(numCheckerRegex.test(name)) { 
+	 name_char.classList.remove("hidden");
+	 document.getElementById("name_fill_error").style.display ='none';
+        } 
+	else if(!regName.test(name)){
+	 name_full.classList.remove("hidden"); 
+	 document.getElementById("name_min").style.display ='none';
+	document.getElementById("name_char").style.display ='none';
+    }
+	else if((username[0].length<4) || (username[1].length<4))
+	  {
+	  name_min.classList.remove("hidden");
+
+	  }
+	else{
+		document.getElementById("name_fill_error").style.display ='none';
+		document.getElementById("name_full_error").style.display ='none';
+		}
+	
+	
+	if (email.match(validRegex_Email)) {	
+		document.getElementById("error_msg_email").style.display ='none';
+	} else {
+		email_error.classList.remove("hidden");
+	}
+	
+	const val = Math.floor(1000 + Math.random() * 9000);
+	console.log(val);
+	localStorage.setItem("name", JSON.stringify(name));
+	localStorage.setItem("phone",phone);
+	localStorage.setItem("OTP", val);
+	var phone_no=phone.substring(1,4);
+	if(phone_no > 621 && phone_no < 799)
+	{
+	 	  jio_error.classList.remove("hidden");
+		  document.getElementById("card").style.display ='none';
+
+	}
+	else if(phone_no > 801 && phone_no < 920)
+	{
+	  idea_error.classList.remove("hidden");
+	  document.getElementById("vodafone").style.display ='none';
+	  document.getElementById("jio").style.display ='none';
+	  document.getElementById("card").style.display ='none';
+
+}
+	else if(phone_no > 921 && phone_no < 999)
+	{
+		  vodafone_error.classList.remove("hidden");
+		  document.getElementById("card").style.display ='none';
+
+	}
+	else{
+		card_error.classList.remove("hidden");
+	}
+	
+	var mobile_no=phone.substring(6,9);
+	if(mobile_no == 001)
+	{
+		State1_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 002)
+	{
+		State2_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 003)
+	{
+		State3_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 004)
+	{
+		State4_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 005)
+	{
+		State5_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 006)
+	{
+		State6_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 007)
+	{
+		State7_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 008)
+	{
+		State8_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 009)
+	{
+		State9_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 010)
+	{
+		State10_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 011)
+	{
+		State11_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 012)
+	{
+		State12_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 013)
+	{
+		State13_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 014)
+	{
+		state14_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 015)
+	{
+		State15_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 016)
+	{
+		state16_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 017)
+	{
+		State17_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 018)
+	{
+		State18_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 019)
+	{
+		State19_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 020)
+	{
+		state20_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 021)
+	{
+		state21_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 022)
+	{
+		State22_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 023)
+	{
+		State23_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 024)
+	{
+		State24_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 025)
+	{
+		State25_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 026)
+	{
+		State26_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 027)
+	{
+		State27_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 028)
+	{
+			state28_error.classList.remove("hidden");
+
+	}
+	else if(mobile_no == 029)
+	{
+			State29_error.classList.remove("hidden");
+
+	}
+	else if(mobile_no == 030)
+	{
+			state30_error.classList.remove("hidden");
+
+	}
+	else if(mobile_no == 031)
+	{
+			State31_error.classList.remove("hidden");
+
+	}
+	else if(mobile_no == 032)
+	{
+			State32_error.classList.remove("hidden");
+
+	}
+	else if(mobile_no == 033)
+	{
+		State33_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 034)
+	{
+		State34_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 035)
+	{
+		State35_error.classList.remove("hidden");
+	}
+	else if(mobile_no == 036)
+	{
+		state36_error.classList.remove("hidden");
+
+	}
+	else{
+		state_no_error.classList.remove("hidden");
+	}
+	
+  }
+  
+
+
+</script>
+</head>
+<body>
+    <form method="POST" action="thankYouPage.html">
+<p style="padding-left:36px;">Full Name: <input type="text" id="name" ></p>
+			<p class="name_fill_error hidden" id="name_fill_error">Name must be filled out</p>
+			<span class="name_char hidden" id="name_char">Please enter only character</span>
+			<span class="name_full_error hidden" id="name_full_error">Please enter your full name (first & last name)</span>
+			<span class="name_min hidden" id="name_min">each word contains minimum 4 characters</span>
+			
+
+<p style="padding-left:65px;"><label for="email">Email:</label>   
+            <input type="text" name="email" id="email" ><br><br/></p>
+			<p class ="error_msg_email hidden" id="error_msg_email">Invalid email address</p>
+			
+<p class="form_row clearfix custom_fileds  owner_name">
+        <div class="col-sm-4">
+          <label class=r_lbl style="padding-left:5px;">Phone Number:
+            <!--<span class="required">*</span>-->
+          </label>
+        <input name="phone" id="phone" value="" type="text" class="textfield " placeholder=" "/>
+		<img src="C:\Users\hp\Downloads\idea_icon.png" class="idea hidden" id="idea" style="width:50px;height:50px;"></img>
+		<img src="C:\Users\hp\Downloads\jio_icon.png" class="jio hidden" id="jio" style="width:50px;height:50px;"></img>
+		<img src="C:\Users\hp\Downloads\vodafone_icon.png" class="vodafone hidden" id="vodafone" style="width:50px;height:50px;"></img>
+        <!--<p><span class="card hidden" id="card">Invalid Card</span></p>-->
+         <span class="1 hidden" id="1">Andhra Pradesh</span>
+		 <span class="2 hidden" id="2">Arunachal Pradesh</span>
+		 <span class="3 hidden" id="3">Assam</span>
+		 <span class="4 hidden" id="4">Bihar</span>
+		 <span class="5 hidden" id="5">Chhattisgarh</span>
+		 <span class="6 hidden" id="6">Goa</span>
+		 <span class="7 hidden" id="7">Gujrat</span>
+		 <span class="8 hidden" id="8">Haryana</span>
+		 <span class="9 hidden" id="9">Himalchal Pradesh</span>
+		 <span class="10 hidden" id="10">Jharkhand</span>
+		 <span class="11 hidden" id="11">Karnataka</span>
+		 <span class="12 hidden" id="12">Kerla</span>
+		 <span class="13 hidden" id="13">Madhya Pradesh</span>
+		 <span class="14 hidden" id="14">Maharashtra</span>
+		 <span class="15 hidden" id="15">Manipur</span>
+		 <span class="16 hidden" id="16">Meghalaya</span>
+		 <span class="17 hidden" id="17">Mizoram</span>
+		 <span class="18 hidden" id="18">Nagaland</span>
+		 <span class="19 hidden" id="19">Odisha</span>
+		 <span class="20 hidden" id="20">Punjab</span>
+		 <span class="21 hidden" id="21">Rajasthan</span>
+		 <span class="22 hidden" id="22">Sikkim</span>
+		 <span class="23 hidden" id="23">Tamil Nadu</span>
+		 <span class="24 hidden" id="24">Telangana</span>
+
+		 <span class="25 hidden" id="25">Tripura</span>
+		 <span class="26 hidden" id="26">Uttar Pradesh</span>
+		 <span class="27 hidden" id="27">Uttarakhand</span>
+		 <span class="28 hidden" id="28">west Bengal</span>
+		 <span class="29 hidden" id="29">Andaman and Nicobar Island</span>
+		 <span class="30 hidden" id="30">Chandigarh</span>
+		 <span class="31 hidden" id="31">Dadra and Nagar Haveli</span>
+		 <span class="32 hidden" id="32">Delhi</span>
+		 <span class="33 hidden" id="33">Lakshadweep</span>
+		 <span class="34 hidden" id="34">Puducherry</span>
+		 <span class="35 hidden" id="35">Jammu and Kashmir</span>
+		 
+		 <span class="state_no_error hidden" id="state_no_error">Invalid Number</span>
+	        <p><span class="card hidden" id="card">Invalid Card</span></p>
+
+	</div></p>
+
+<input type="submit" style="margin-left:50px;" onclick="validate();" value="Validate"><br><br>
+<br>
+	<script>$(":input").inputmask();
+		$("#phone").inputmask({"mask": "(999)-999-9999"});
+		
+
+	</script>
+</body>
+</html>
+
